@@ -18,18 +18,26 @@ public class SpreadsheetImpl {
     }
 
     public String get(int row, int column) {
+        validateCell(row, column);
         String cellKey = createCellKey(row, column);
 
         return spreadSheetContent.getOrDefault(cellKey, "");
     }
 
     public void put(int row, int column, String value) {
+        validateCell(row, column);
         String cellKey = createCellKey(row, column);
 
         spreadSheetContent.put(cellKey, value);
     }
 
+    private void validateCell(int row, int column) {
+        if (row < 0 || row >= rows || column < 0 || column >= cols) {
+            throw new IndexOutOfBoundsException("The row or column value is out of bounds.");
+        }
+    }
+
     private String createCellKey(int row, int column) {
-       return String.format("%s:%s", row, column);
+        return String.format("%s:%s", row, column);
     }
 }
