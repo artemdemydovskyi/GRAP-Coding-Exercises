@@ -85,10 +85,10 @@ public class Question {
         Assert.assertEquals("     foo ", sheet.get(2, 2));
     }
 
-    /**
-     * In a more real example, the different representations could perhaps be JSON,
-     * XML, CSV and binary format. But we will use simple export options here.
-     */
+//    /**
+//     * In a more real example, the different representations could perhaps be JSON,
+//     * XML, CSV and binary format. But we will use simple export options here.
+//     */
 //    @Test
 //    public void differentExportOptionsAreProvided() {
 //        sheet.put(0, 0, "a");

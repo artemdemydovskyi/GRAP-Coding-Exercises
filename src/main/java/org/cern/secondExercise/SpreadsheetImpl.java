@@ -9,7 +9,7 @@ public class SpreadsheetImpl {
     private final Map<String, String> spreadSheetContent;
 
     public SpreadsheetImpl(int rows, int cols) {
-        if(rows < 0 || cols < 0) {
+        if (rows < 0 || cols < 0) {
             throw new IllegalArgumentException("The columns and rows' numbers couldn't be negative");
         }
         this.rows = rows;
@@ -28,7 +28,14 @@ public class SpreadsheetImpl {
         validateCell(row, column);
         String cellKey = createCellKey(row, column);
 
-        spreadSheetContent.put(cellKey, value);
+        String trimmedValue = value.trim();
+        ValueType valueType = ValueTypeIdentifier.identifyValueType(trimmedValue);
+
+        if (ValueType.INTEGER == valueType) {
+            spreadSheetContent.put(cellKey, trimmedValue);
+        } else {
+            spreadSheetContent.put(cellKey, value);
+        }
     }
 
     public ValueType getValueType(int row, int col) {
