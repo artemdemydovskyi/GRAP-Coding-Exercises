@@ -17,6 +17,14 @@ public class SpreadsheetImpl {
         this.spreadSheetContent = new HashMap<>();
     }
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
     public String get(int row, int column) {
         validateCell(row, column);
         String cellKey = createCellKey(row, column);
