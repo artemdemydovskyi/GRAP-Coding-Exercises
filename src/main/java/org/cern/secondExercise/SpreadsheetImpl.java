@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class SpreadsheetImpl {
     private final int rows;
     private final int cols;
-    private Map<String, String> spreadSheetContent;
+    private final Map<String, String> spreadSheetContent;
 
     public SpreadsheetImpl(int rows, int cols) {
         if(rows < 0 || cols < 0) {
@@ -31,6 +31,14 @@ public class SpreadsheetImpl {
         spreadSheetContent.put(cellKey, value);
     }
 
+    public ValueType getValueType(int row, int col) {
+        validateCell(row, col);
+
+        String value = get(row, col);
+
+        return ValueTypeIdentifier.identifyValueType(value);
+    }
+
     private void validateCell(int row, int column) {
         if (row < 0 || row >= rows || column < 0 || column >= cols) {
             throw new IndexOutOfBoundsException("The row or column value is out of bounds.");
@@ -40,4 +48,5 @@ public class SpreadsheetImpl {
     private String createCellKey(int row, int column) {
         return String.format("%s:%s", row, column);
     }
+
 }
