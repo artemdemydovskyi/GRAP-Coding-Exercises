@@ -111,17 +111,17 @@ public class Question {
                         + "-----" // 9
                 , new DashSpreadsheetExporter(sheet).export());
 
-//        Assert.assertEquals("10,5#" // Line breaks added for readability. There are no "\n" in the String
-//                        + "a*****" // 0
-//                        + "*b****" // 1
-//                        + "**c***" // 2
-//                        + "***d*e*" // 3
-//                        + "*****" // 4
-//                        + "*****" // 5
-//                        + "*****" // 6
-//                        + "*****" // 7
-//                        + "*****" // 8
-//                        + "*****" // 9
-//                , new StarSpreadsheetExporter(sheet).export());
+        Assert.assertEquals("10,5#" // Line breaks added for readability. There are no "\n" in the String
+                        + "a*****" // 0
+                        + "*b****" // 1
+                        + "**c***" // 2
+                        + "***d*e*" // 3
+                        + "*****" // 4
+                        + "*****" // 5
+                        + "*****" // 6
+                        + "*****" // 7
+                        + "*****" // 8
+                        + "*****" // 9
+                , new StarSpreadsheetExporter(sheet).export());
     }
 }
